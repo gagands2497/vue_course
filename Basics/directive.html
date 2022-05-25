@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>Hye gagan</p>
+        <!-- <img src="https://picsum.photos/200/300" alt=""> -->
+        <img v-bind:src="src" v-bind:alt="alt">
+        <p v-text = "myText"></p>
+        <p v-html = "myHTML"></p>
+        <!-- vue will recognoize theinterpolation now and replace the soucrce and alternate -->
+        <!-- /v-bind will bind the properties with our vue instance -->
+    </div>
+</body>
+<script>
+    //directive is an instruction to modify the html code
+    //to get the desired result
+    const App = {
+        data(){
+            return {
+                src:"https://picsum.photos/200/300",
+                alt:"another Image",
+                myText:"THIS IS A TEXT",
+                myHTML:"<h1>MY HTML</h1>"
+            }
+        },
+        methods:{
+
+        }
+    }
+    Vue.createApp(App).mount('#app')
+</script>
+</html>
