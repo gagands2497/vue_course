@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{greeting}}</p>
+        <p>Is it True : {{isItTrue ? "YES":"NO"}}</p>
+        <p>{{array[0]}}</p>
+        <p>I have a {{obj.car}}</p>
+        <p>{{welcome()}}</p>
+        <p>{{greet()}}</p>
+    </div>
+</body>
+<script>
+    const date = new Date().toLocaleString()
+    const App = {
+        //we can add data to any vue instance
+        data(){
+            //this function always return object
+            //vue js can process this data
+            return {
+                greeting:"HELLO GUYS today is " + date,
+                isItTrue:false,
+                array:["GAGAN","RAMAN","Shivay","Sukhraj","Jagnoor","Gaurav"],
+                obj:{
+                    car:"Spaceship"
+                }
+            }
+        },
+        //we can also add some methods to the vue instacne
+        methods:{
+            welcome(){
+                return `Welcome ${this.array[Math.floor(Math.random()*this.array.length)]}`
+            },
+            greet(){
+                //if i give only greeting 
+                //javascript will try to find the vasriable 
+                //outside the vue configuration
+                return this.greeting
+            }
+        }
+    }
+    //in our case App is the configuration
+    //pass all the configuratuions in crateApp
+    Vue.createApp(App).mount("#app")
+</script>
+</html>
